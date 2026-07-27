@@ -1,0 +1,19 @@
+# Mark UE binary assets as binary
+*.uasset binary
+*.umap binary
+*.uexp binary
+*.ubulk binary
+*.exe binary
+*.dll binary
+*.pdb binary
+*.so binary
+*.dylib binary
+
+# LF for source files (autocrlf-safe on Windows)
+*.cpp text eol=lf
+*.h text eol=lf
+*.cs text eol=lf
+*.ini text eol=lf
+*.uproject text eol=lf
+*.uplugin text eol=lf
+*.md text eol=lf

@@ -1,0 +1,42 @@
+# Unreal Engine 5.3 build artefacts
+Binaries/
+Build/
+DerivedDataCache/
+Intermediate/
+Saved/
+
+# Visual Studio / Rider
+.vs/
+*.VC.db
+*.opensdf
+*.opendb
+*.sdf
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# IDE / OS
+.vscode/
+.idea/
+*.code-workspace
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Per-user / per-OS engine directories
+Config/Layouts/
+Saved/Config/
+Content/Developers/
+Content/Collections/
+
+# Generated content
+Content/StarterContent/
+Content/__ExternalActors__/
+Content/__ExternalObjects__/
+Content/__ExternalAssetAudit__/
+
+# Misc
+*.log
+*.tmp
+*.bak
