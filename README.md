@@ -13,6 +13,7 @@
 ## 📑 目录
 
 - [🎮 游戏概览](#-游戏概览)
+- [🕐 创建时间](#-创建时间)
 - [✨ 游戏特色](#-游戏特色)
 - [🛠 技术栈](#-技术栈)
 - [💻 系统要求](#-系统要求)
@@ -41,19 +42,28 @@
 
 ---
 
+## 🕐 创建时间
+
+项目在 **2024-11-04** 开发。
+
+---
+
 ## ✨ 游戏特色
 
 ### 🎯 鼠标瞄准射击
+
 - 枪精灵(gun)实时朝鼠标方向旋转
 - 子弹沿 `FVector2D` 方向直线飞行,基于 Sphere 碰撞
 - 子弹击中敌人后自我禁用并销毁,避免重复触发
 
 ### 🤖 AI 追击 + 距离停止
+
 - 敌人每帧计算与玩家距离
 - 距离 > `StopDistance` 时朝玩家移动
 - 进入停止距离后停步,让玩家可以贴身作战
 
 ### 📈 动态难度曲线
+
 - 每击杀 10 个敌人触发一次难度上升
 - 同时调整 3 个数值:
   - `SpawnTime`(刷怪间隔)↓ 至最小值
@@ -61,12 +71,14 @@
   - `ShootCooldownDurationInSeconds`(玩家射速)↓ 至最小值
 
 ### 💥 Buff 系统
+
 - 「开挂」技能:临时提升移动速度 + 大幅加快射速
 - 持续时间 `GuaShootTimeLen` = 10s
 - 冷却时间 `GuaShootCDTimeLen` = 15s
 - 用 `bIsKaiLe` / `bIsKaiBa` 双标志位管理状态
 
 ### 🖼 UMG 状态机 UI
+
 - **WBP_HUD**:战斗中常驻的 HP/得分/计时
 - **WBP_daoshu**:倒数字幕
 - **WBP_Xinshou / WBP_Xinshou1 / WBP_Xinshou_end**:教学关流程
@@ -74,6 +86,7 @@
 - **WBP_tui**:退场 UI
 
 ### 🎮 增强输入
+
 - 三个 Input Action:`IA_Move` / `IA_Shoot` / `IA_KaiGua`
 - `IMC_GunSurvivors` 集中管理键位
 
@@ -81,22 +94,23 @@
 
 ## 🛠 技术栈
 
-| 类别 | 技术 |
-| --- | --- |
-| 引擎 | Unreal Engine 5.3 |
-| 渲染 | Paper2D(`UPaperFlipbookComponent`、`UPaperSpriteComponent`) |
-| 输入 | Enhanced Input 系统 |
-| 物理 | UE Chaos + `UCapsuleComponent` / `USphereComponent` |
-| UI | UMG(`UUserWidget`、自定义鼠标光标) |
-| 音频 | `USoundBase` + 2D 播放 |
+| 类别     | 技术                                                                                 |
+| -------- | ------------------------------------------------------------------------------------ |
+| 引擎     | Unreal Engine 5.3                                                                    |
+| 渲染     | Paper2D(`UPaperFlipbookComponent`、`UPaperSpriteComponent`)                      |
+| 输入     | Enhanced Input 系统                                                                  |
+| 物理     | UE Chaos +`UCapsuleComponent` / `USphereComponent`                               |
+| UI       | UMG(`UUserWidget`、自定义鼠标光标)                                                 |
+| 音频     | `USoundBase` + 2D 播放                                                             |
 | 模块依赖 | `Core`、`CoreUObject`、`Engine`、`InputCore`、`EnhancedInput`、`Paper2D` |
-| C++ 标准 | UE C++(`PCHUsage = UseExplicitOrSharedPCHs`) |
+| C++ 标准 | UE C++(`PCHUsage = UseExplicitOrSharedPCHs`)                                       |
 
 ---
 
 ## 💻 系统要求
 
 ### 运行环境
+
 - **操作系统**:Windows 10 / 11 (64-bit)
 - **GPU**:支持 DirectX 12(默认 DX12,SM6;DX11 可降级)
 - **硬件目标**:Desktop / Maximum(详见 `DefaultEngine.ini`)
@@ -104,6 +118,7 @@
 - **硬盘**:≥ 5 GB 可用空间
 
 ### 开发环境
+
 - **Unreal Engine 5.3**(Epic Games Launcher 安装)
 - **Visual Studio 2022**(组件见 `.vsconfig`):
   - `Microsoft.Net.Component.4.6.2.TargetingPack`
@@ -157,12 +172,12 @@ cd GunSurvivors
 
 ### ⚠️ 首次打开常见问题
 
-| 现象 | 解决方案 |
-| --- | --- |
-| 找不到 `BP_Player` 等蓝图 | 确认 `Content/BP/` 完整,不要删除 `Content/` 目录 |
-| 鼠标不显示或显示默认光标 | 检查 `DefaultEngine.ini` 中 `SoftwareCursors` 指向 `BP_widget_shubiao` |
-| C++ 编译失败 | 通过 Visual Studio Installer 安装 `.vsconfig` 列出的所有组件 |
-| 教学关卡无法触发 | 确认关卡中放置了 `BP_GameMode` 且 `Default Pawn Class` 设为 `BP_Player` |
+| 现象                       | 解决方案                                                                     |
+| -------------------------- | ---------------------------------------------------------------------------- |
+| 找不到`BP_Player` 等蓝图 | 确认`Content/BP/` 完整,不要删除 `Content/` 目录                          |
+| 鼠标不显示或显示默认光标   | 检查`DefaultEngine.ini` 中 `SoftwareCursors` 指向 `BP_widget_shubiao`  |
+| C++ 编译失败               | 通过 Visual Studio Installer 安装`.vsconfig` 列出的所有组件                |
+| 教学关卡无法触发           | 确认关卡中放置了`BP_GameMode` 且 `Default Pawn Class` 设为 `BP_Player` |
 
 ---
 
@@ -170,11 +185,11 @@ cd GunSurvivors
 
 ### 键位
 
-| 操作 | 键位 | 说明 |
-| --- | --- | --- |
-| 🏃 移动 | `W` / `A` / `S` / `D` 或方向键 | 八方向移动,自动切换 Idle/Run 动画 |
-| 🎯 瞄准 + 射击 | 鼠标移动 + 鼠标左键 | 枪口实时朝鼠标方向,点击发射子弹 |
-| 💥 开挂 Buff | `Q` / `Space` | 进入高速射击 + 加速状态,持续 10s,冷却 15s |
+| 操作           | 键位                                   | 说明                                      |
+| -------------- | -------------------------------------- | ----------------------------------------- |
+| 🏃 移动        | `W` / `A` / `S` / `D` 或方向键 | 八方向移动,自动切换 Idle/Run 动画         |
+| 🎯 瞄准 + 射击 | 鼠标移动 + 鼠标左键                    | 枪口实时朝鼠标方向,点击发射子弹           |
+| 💥 开挂 Buff   | `Q` / `Space`                      | 进入高速射击 + 加速状态,持续 10s,冷却 15s |
 
 ### 玩法循环
 
@@ -196,19 +211,19 @@ cd GunSurvivors
 
 ### 敌人行为
 
-| 行为 | 触发条件 |
-| --- | --- |
-| 追击玩家 | `bIsAlive && bCanFollow && Player != nullptr` 且距离 > `StopDistance` |
-| 停止移动 | 距离 ≤ `StopDistance` |
-| 死亡播放动画 | 被子弹击中(`ABullet::OverlapBegin` → `Enemy->Die()`) |
-| 销毁 | 死亡后 10 秒(让死亡动画播完) |
+| 行为         | 触发条件                                                                  |
+| ------------ | ------------------------------------------------------------------------- |
+| 追击玩家     | `bIsAlive && bCanFollow && Player != nullptr` 且距离 > `StopDistance` |
+| 停止移动     | 距离 ≤`StopDistance`                                                   |
+| 死亡播放动画 | 被子弹击中(`ABullet::OverlapBegin` → `Enemy->Die()`)                 |
+| 销毁         | 死亡后 10 秒(让死亡动画播完)                                              |
 
 ### 「开挂」Buff 数值
 
-| 状态 | 移动速度 | 射击冷却 |
-| --- | --- | --- |
-| 平时 | 100.0 | 0.85s |
-| 开挂中 | 150.0 | 0.1s |
+| 状态   | 移动速度 | 射击冷却 |
+| ------ | -------- | -------- |
+| 平时   | 100.0    | 0.85s    |
+| 开挂中 | 150.0    | 0.1s     |
 
 ---
 
@@ -442,17 +457,17 @@ SoftwareCursors=((Default, "/Game/BP/BP_widget_shubiao.BP_widget_shubiao_C"))
 
 所有难度参数都在 `AEnemySpawner` 上,直接在 BP 中调整:
 
-| 参数 | 默认 | 含义 |
-| --- | --- | --- |
-| `SpawnTime` | 1.0s | 初始刷怪间隔 |
-| `SpawnTimeMinimumLimit` | 0.4s | 刷怪间隔下限 |
-| `DecreaseSpawnTimerByEveryInterval` | 0.05s | 每 10 杀缩短的间隔 |
-| `EnemySpeed` | 50.0 | 敌人初始移速 |
-| `MaxEnemySpeed` | 80.0 | 敌人移速上限 |
-| `NanduUpSpeed` | 2.5 | 每 10 杀提速 |
-| `ShootSpeed` | 0.05s | 每 10 杀玩家射速提升量 |
-| `MinShootSpeed` | 0.25s | 玩家射速上限 |
-| `DifficultySpawnInterval` | 10 | 多少杀触发一次难度 |
+| 参数                                  | 默认  | 含义                   |
+| ------------------------------------- | ----- | ---------------------- |
+| `SpawnTime`                         | 1.0s  | 初始刷怪间隔           |
+| `SpawnTimeMinimumLimit`             | 0.4s  | 刷怪间隔下限           |
+| `DecreaseSpawnTimerByEveryInterval` | 0.05s | 每 10 杀缩短的间隔     |
+| `EnemySpeed`                        | 50.0  | 敌人初始移速           |
+| `MaxEnemySpeed`                     | 80.0  | 敌人移速上限           |
+| `NanduUpSpeed`                      | 2.5   | 每 10 杀提速           |
+| `ShootSpeed`                        | 0.05s | 每 10 杀玩家射速提升量 |
+| `MinShootSpeed`                     | 0.25s | 玩家射速上限           |
+| `DifficultySpawnInterval`           | 10    | 多少杀触发一次难度     |
 
 ### 调试小贴士
 
